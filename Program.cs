@@ -11,53 +11,19 @@ namespace GamePiece
             public bool Frozen { get; set; } = false;
             public string Color { get; set; }
             public string Name { get; set; }
+            Random randomNumber = new Random();
 
-            public int MoveRight()
+            public int Move()
             {
                 if (Frozen == false)
                 {
-                    PositionX++;
+                    PositionX = randomNumber.Next(0, 100);
+                    PositionY = randomNumber.Next(0, 500);
                     return PositionX;
                 }
                 else
                 {
                     return PositionX;
-                }
-            }
-            public int MoveLeft()
-            {
-                if (Frozen == false)
-                {
-                    PositionX--;
-                    return PositionX;
-                }
-                else
-                {
-                    return PositionX;
-                }
-            }
-            public int MoveUp()
-            {
-                if (Frozen == false)
-                {
-                    PositionY++;
-                    return PositionY;
-                }
-                else
-                {
-                    return PositionY;
-                }
-            }
-            public int MoveDown()
-            {
-                if (Frozen == false)
-                {
-                    PositionY--;
-                    return PositionY;
-                }
-                else
-                {
-                    return PositionY;
                 }
             }
             public Boolean Freeze()
@@ -72,35 +38,41 @@ namespace GamePiece
             }
             public override string ToString()
             {
-                return $"{Color} {Name} is located at X:{PositionX} and Y:{PositionY} and frozen is {Frozen}.";
+                if (Frozen == false)
+                {
+                    return $"{Color} {Name} is located at X:{PositionX} and Y:{PositionY}.";
+                }
+                else
+                {
+                    return "You are Frozen!";
+                }
+
+
             }
+            static void Main(string[] args)
+            {
+                var piece1 = new GamePiece();
 
-        }
-        static void Main(string[] args)
-        {
-            var piece1 = new GamePiece();
+                piece1.Color = "Red";
+                piece1.Name = "Bertha";
 
-            piece1.Color = "Red";
-            piece1.Name = "Bertha";
+                piece1.Move();
+                Console.WriteLine(piece1);
 
-            piece1.MoveRight();
-            Console.WriteLine(piece1);
+                piece1.Freeze();
 
-            piece1.Freeze();
-            Console.WriteLine(piece1);
+                piece1.Move();
+                Console.WriteLine(piece1);
 
-            piece1.MoveUp();
-            Console.WriteLine(piece1);
+                piece1.Unfreeze();
 
-            piece1.Unfreeze();
-            Console.WriteLine(piece1);
+                piece1.Move();
+                Console.WriteLine(piece1);
 
-            piece1.MoveLeft();
-            Console.WriteLine(piece1);
+                piece1.Move();
+                Console.WriteLine(piece1);
 
-            piece1.MoveDown();
-            Console.WriteLine(piece1);
-
+            }
         }
     }
 }
