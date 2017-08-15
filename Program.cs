@@ -70,6 +70,10 @@ namespace GamePiece
                 Frozen = false;
                 return Frozen;
             }
+            public override string ToString()
+            {
+                return $"{Color} {Name} is located at X:{PositionX} and Y:{PositionY} and frozen is {Frozen}.";
+            }
 
         }
         static void Main(string[] args)
@@ -80,22 +84,22 @@ namespace GamePiece
             piece1.Name = "Bertha";
 
             piece1.MoveRight();
-            Console.WriteLine($"{piece1.Color} {piece1.Name} is at X:{piece1.PositionX} and Y:{piece1.PositionY}");
+            Console.WriteLine(piece1);
 
             piece1.Freeze();
-            Console.WriteLine($"{piece1.Color} {piece1.Name} is frozen.");
+            Console.WriteLine(piece1);
 
             piece1.MoveUp();
-            Console.WriteLine($"{piece1.Color} {piece1.Name} is at X:{piece1.PositionX} and Y:{piece1.PositionY}");
+            Console.WriteLine(piece1);
 
             piece1.Unfreeze();
-            Console.WriteLine($"{piece1.Color} {piece1.Name} is unfrozen.");
+            Console.WriteLine(piece1);
 
             piece1.MoveLeft();
-            Console.WriteLine($"{piece1.Color} {piece1.Name} is at X:{piece1.PositionX} and Y:{piece1.PositionY}");
+            Console.WriteLine(piece1);
 
             piece1.MoveDown();
-            Console.WriteLine($"{piece1.Color} {piece1.Name} is at X:{piece1.PositionX} and Y:{piece1.PositionY}");
+            Console.WriteLine(piece1);
 
         }
     }
